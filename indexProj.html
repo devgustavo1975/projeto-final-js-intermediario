@@ -2,113 +2,29 @@
 <html lang="pt-BR">
 
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Cadastro de Pessoas</title>
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-  <style>
-    .sucesso {
-      color: green;
-    }
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Cadastro de Pessoas</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="proj.css" rel="stylesheet">
 
-    .erro {
-      color: red;
-    }
-
-    #resultado img {
-      max-width: 120px;
-      margin-top: 10px;
-      border: 1px solid #ccc;
-      border-radius: 6px;
-    }
-  </style>
 </head>
 
 <body class="bg-light">
 
-  <div class="container mt-4">
-    <div class="card p-4">
-      <h1 class="text-center mb-4">Cadastro de Pessoas</h1>
+    <div class="container mt-4">
+        <div class="card p-4">
+            <h1 class="text-center mb-4">Cadastro de Pessoas</h1>
 
-      <div class="mb-3">
-        <label for="input-pessoa" class="form-label">Digite o nome da pessoa:</label>
-        <input type="text" class="form-control" id="input-pessoa" placeholder="Ex: Maria Silva">
-      </div>
+            <div class="mb-3">
+                <label for="input-pessoa" class="form-label">Digite o nome da pessoa:</label>
+                <input type="text" class="form-control" id="input-pessoa" placeholder="Ex: Maria Silva">
+            </div>
 
-      <p id="resultado" class="mt-4 text-center fs-5"></p>
+            <p id="resultado" class="mt-4 text-center fs-5"></p>
+        </div>
     </div>
-  </div>
-
-  <script>
-    const pessoas = [
-      {
-        nome: "Maria Silva",
-        sexo: "Feminino",
-        dtNascimento: "1990-06-15",
-        grauEscolaridade: "Ensino Superior Completo",
-        endereco: "Rua das Flores, 123 - São Paulo, SP",
-        foto: "https://randomuser.me/api/portraits/women/44.jpg"
-      },
-      {
-        nome: "João Souza",
-        sexo: "Masculino",
-        dtNascimento: "1985-10-22",
-        grauEscolaridade: "Ensino Médio Completo",
-        endereco: "Av. Brasil, 456 - Rio de Janeiro, RJ",
-        foto: "https://randomuser.me/api/portraits/men/33.jpg"
-      },
-      {
-        nome: "Ana Oliveira",
-        sexo: "Feminino",
-        dtNascimento: "1992-03-08",
-        grauEscolaridade: "Pós-Graduação",
-        endereco: "Rua Atlântica, 789 - Curitiba, PR",
-        foto: "https://randomuser.me/api/portraits/women/68.jpg"
-      },
-      {
-        nome: "Carlos Pereira",
-        sexo: "Masculino",
-        dtNascimento: "1979-12-01",
-        grauEscolaridade: "Ensino Superior Incompleto",
-        endereco: "Rua do Sol, 321 - Salvador, BA",
-        foto: "https://randomuser.me/api/portraits/men/41.jpg"
-      }
-    ];
-
-    const input = document.getElementById('input-pessoa');
-    const resultado = document.getElementById('resultado');
-
-    input.addEventListener('input', () => {
-      const termo = input.value.trim().toLowerCase();
-
-      if (termo === "") {
-        resultado.innerHTML = "";
-        return;
-      }
-
-      const pessoaEncontrada = pessoas.find(p =>
-        p.nome.toLowerCase().includes(termo)
-      );
-
-      if (pessoaEncontrada) {
-        const idade = new Date().getFullYear() - new Date(pessoaEncontrada.dtNascimento).getFullYear();
-
-        resultado.className = "sucesso";
-        resultado.innerHTML = `
-          👤 <strong>${pessoaEncontrada.nome}</strong><br>
-          Sexo: <strong>${pessoaEncontrada.sexo}</strong><br>
-          Data de Nascimento: <strong>${new Date(pessoaEncontrada.dtNascimento).toLocaleDateString('pt-BR')}</strong> (${idade} anos)<br>
-          Escolaridade: <strong>${pessoaEncontrada.grauEscolaridade}</strong><br>
-          Endereço: <strong>${pessoaEncontrada.endereco}</strong><br>
-          <img src="${pessoaEncontrada.foto}" alt="Foto de ${pessoaEncontrada.nome}" />
-        `;
-      } else {
-        resultado.className = "erro";
-        resultado.textContent = "❌ Nenhuma pessoa encontrada com esse nome.";
-      }
-    });
-  </script>
-
+    <script src="proj.js"></script>
 </body>
 
 </html>
