@@ -19,6 +19,9 @@ input.addEventListener('input', () => {
 
     if (termo === "") {
         resultado.innerHTML = "";
+        document.getElementById("valor-vt-func").textContent = "";
+        document.getElementById("valor-vt-empresa").textContent = "";
+        document.getElementById("valor-fgts").textContent = "";
         return;
     }
 
@@ -26,46 +29,64 @@ input.addEventListener('input', () => {
         p.nome.toLowerCase().includes(termo)
     );
 
-    let resultadoPessoa = pessoasFiltradas[0];
+    const resultadoPessoa = pessoasFiltradas[0];
 
     if (resultadoPessoa) {
         const idade = new Date().getFullYear() - new Date(resultadoPessoa.dtNascimento).getFullYear();
         resultado.className = "sucesso";
 
-        let vtDescontoHTML = "";
+        // Cálculos
+        const salario = resultadoPessoa.salario;
+        const passagemDiaria = resultadoPessoa.passagemDiaria;
+        const valorTotalPassagem = calcularVTempresa(passagemDiaria);
+        const valor6porcento = calcularDescontoVT(salario);
+        const valorFGTS = calcularFGTS(salario);
+
         let valorDescontoVT = 0;
         let valorVTempresa = 0;
 
         if (resultadoPessoa.opcaoVT) {
-            valorDescontoVT = calcularDescontoVT(resultadoPessoa.salario);
-            valorVTempresa = calcularVTempresa(resultadoPessoa.passagemDiaria);
-            vtDescontoHTML = `
-        <br><strong>💳 Optou pelo VT:</strong> Sim<br>
-        Desconto de 6% (funcionário): <strong>R$ ${valorDescontoVT.toFixed(2)}</strong><br>
-        Valor pago pela empresa (VT): <strong>R$ ${valorVTempresa.toFixed(2)}</strong>
-    `;
-        } else {
-            vtDescontoHTML = `<br><strong>💳 Optou pelo VT:</strong> Não`;
+            if (valorTotalPassagem <= valor6porcento) {
+                valorDescontoVT = valorTotalPassagem;
+                valorVTempresa = 0;
+            } else {
+                valorDescontoVT = valor6porcento;
+                valorVTempresa = valorTotalPassagem - valor6porcento;
+            }
         }
 
-        // FGTS: 8% do salário
-        const valorFGTS = calcularFGTS(resultadoPessoa.salario);
-
+        // Atualiza o HTML principal da pessoa
         resultado.innerHTML = `
-    👤 <strong>${resultadoPessoa.nome}</strong><br>
-    Sexo: <strong>${resultadoPessoa.sexo}</strong><br>
-    Data de Nascimento: <strong>${new Date(resultadoPessoa.dtNascimento).toLocaleDateString('pt-BR')}</strong> (${idade} anos)<br>
-    Escolaridade: <strong>${resultadoPessoa.grauEscolaridade}</strong><br>
-    Endereço: <strong>${resultadoPessoa.endereco}</strong><br>
-    Salário: <strong>R$ ${resultadoPessoa.salario.toFixed(2)}</strong><br>
-    Passagem Diária: <strong>R$ ${resultadoPessoa.passagemDiaria.toFixed(2)}</strong>
-    ${vtDescontoHTML}
-    <br>Valor pago pela empresa (FGTS): <strong>R$ ${valorFGTS.toFixed(2)}</strong>
-    <br><img src="${resultadoPessoa.foto}" alt="Foto de ${resultadoPessoa.nome}" />
-`;
+            👤 <strong>${resultadoPessoa.nome}</strong><br>
+            Sexo: <strong>${resultadoPessoa.sexo}</strong><br>
+            Data de Nascimento: <strong>${new Date(resultadoPessoa.dtNascimento).toLocaleDateString('pt-BR')}</strong> (${idade} anos)<br>
+            Escolaridade: <strong>${resultadoPessoa.grauEscolaridade}</strong><br>
+            Endereço: <strong>${resultadoPessoa.endereco}</strong><br>
+            Salário: <strong>R$ ${salario.toFixed(2)}</strong><br>
+            Passagem Diária: <strong>R$ ${passagemDiaria.toFixed(2)}</strong><br>
+            Optou pelo VT: <strong>${resultadoPessoa.opcaoVT ? "Sim" : "Não"}</strong><br>
+            <img src="${resultadoPessoa.foto}" alt="Foto de ${resultadoPessoa.nome}" />
+        `;
+
+        // Atualiza os valores separados
+        document.getElementById("valor-vt-func").textContent = resultadoPessoa.opcaoVT
+            ? `R$ ${valorDescontoVT.toFixed(2)}`
+            : "R$ 0,00";
+
+        document.getElementById("valor-vt-empresa").textContent = resultadoPessoa.opcaoVT
+            ? `R$ ${valorVTempresa.toFixed(2)}`
+            : "R$ 0,00";
+
+        document.getElementById("valor-fgts").textContent = `R$ ${valorFGTS.toFixed(2)}`;
+
     } else {
         resultado.className = "erro";
         resultado.textContent = "❌ Nenhuma pessoa encontrada com esse nome.";
+
+        // Limpa os campos
+        document.getElementById("valor-vt-func").textContent = "";
+        document.getElementById("valor-vt-empresa").textContent = "";
+        document.getElementById("valor-fgts").textContent = "";
     }
 });
 
