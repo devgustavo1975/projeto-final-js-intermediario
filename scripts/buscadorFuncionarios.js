@@ -33,27 +33,36 @@ input.addEventListener('input', () => {
         resultado.className = "sucesso";
 
         let vtDescontoHTML = "";
+        let valorDescontoVT = 0;
+        let valorVTempresa = 0;
+
         if (resultadoPessoa.opcaoVT) {
-            const descontoVT = calcularDescontoVT(resultadoPessoa.salario);
+            valorDescontoVT = calcularDescontoVT(resultadoPessoa.salario);
+            valorVTempresa = calcularVTempresa(resultadoPessoa.passagemDiaria);
             vtDescontoHTML = `
-                    <br><strong>💳 Optou pelo VT:</strong> Sim<br>
-                    Desconto de 6%: <strong>R$ ${descontoVT.toFixed(2)}</strong>
-                `;
+        <br><strong>💳 Optou pelo VT:</strong> Sim<br>
+        Desconto de 6% (funcionário): <strong>R$ ${valorDescontoVT.toFixed(2)}</strong><br>
+        Valor pago pela empresa (VT): <strong>R$ ${valorVTempresa.toFixed(2)}</strong>
+    `;
         } else {
             vtDescontoHTML = `<br><strong>💳 Optou pelo VT:</strong> Não`;
         }
 
+        // FGTS: 8% do salário
+        const valorFGTS = calcularFGTS(resultadoPessoa.salario);
+
         resultado.innerHTML = `
-                👤 <strong>${resultadoPessoa.nome}</strong><br>
-                Sexo: <strong>${resultadoPessoa.sexo}</strong><br>
-                Data de Nascimento: <strong>${new Date(resultadoPessoa.dtNascimento).toLocaleDateString('pt-BR')}</strong> (${idade} anos)<br>
-                Escolaridade: <strong>${resultadoPessoa.grauEscolaridade}</strong><br>
-                Endereço: <strong>${resultadoPessoa.endereco}</strong><br>
-                Salário: <strong>R$ ${resultadoPessoa.salario.toFixed(2)}</strong><br>
-                Passagem Diária: <strong>R$ ${resultadoPessoa.passagemDiaria.toFixed(2)}</strong>
-                ${vtDescontoHTML}
-                <br><img src="${resultadoPessoa.foto}" alt="Foto de ${resultadoPessoa.nome}" />
-            `;
+    👤 <strong>${resultadoPessoa.nome}</strong><br>
+    Sexo: <strong>${resultadoPessoa.sexo}</strong><br>
+    Data de Nascimento: <strong>${new Date(resultadoPessoa.dtNascimento).toLocaleDateString('pt-BR')}</strong> (${idade} anos)<br>
+    Escolaridade: <strong>${resultadoPessoa.grauEscolaridade}</strong><br>
+    Endereço: <strong>${resultadoPessoa.endereco}</strong><br>
+    Salário: <strong>R$ ${resultadoPessoa.salario.toFixed(2)}</strong><br>
+    Passagem Diária: <strong>R$ ${resultadoPessoa.passagemDiaria.toFixed(2)}</strong>
+    ${vtDescontoHTML}
+    <br>Valor pago pela empresa (FGTS): <strong>R$ ${valorFGTS.toFixed(2)}</strong>
+    <br><img src="${resultadoPessoa.foto}" alt="Foto de ${resultadoPessoa.nome}" />
+`;
     } else {
         resultado.className = "erro";
         resultado.textContent = "❌ Nenhuma pessoa encontrada com esse nome.";
@@ -63,4 +72,12 @@ input.addEventListener('input', () => {
 // Função que calcula desconto do vale-transporte
 function calcularDescontoVT(salario) {
     return salario * 0.06;
+}
+
+function calcularVTempresa(passagemDiaria) {
+    return passagemDiaria * 22; // 22 dias úteis
+}
+
+function calcularFGTS(salario) {
+    return salario * 0.08;
 }
