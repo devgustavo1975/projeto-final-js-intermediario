@@ -57,16 +57,17 @@ input.addEventListener('input', () => {
 
         // Atualiza o HTML principal da pessoa
         resultado.innerHTML = `
-            👤 <strong>${resultadoPessoa.nome}</strong><br>
-            Sexo: <strong>${resultadoPessoa.sexo}</strong><br>
-            Data de Nascimento: <strong>${new Date(resultadoPessoa.dtNascimento).toLocaleDateString('pt-BR')}</strong> (${idade} anos)<br>
-            Escolaridade: <strong>${resultadoPessoa.grauEscolaridade}</strong><br>
-            Endereço: <strong>${resultadoPessoa.endereco}</strong><br>
-            Salário: <strong>R$ ${salario.toFixed(2)}</strong><br>
-            Passagem Diária: <strong>R$ ${passagemDiaria.toFixed(2)}</strong><br>
-            Optou pelo VT: <strong>${resultadoPessoa.opcaoVT ? "Sim" : "Não"}</strong><br>
-            <img src="${resultadoPessoa.foto}" alt="Foto de ${resultadoPessoa.nome}" />
-        `;
+        👤 <strong>${resultadoPessoa.nome}</strong><br>
+        Sexo: <strong>${resultadoPessoa.sexo}</strong><br>
+        Data de Nascimento: <strong>${new Date(resultadoPessoa.dtNascimento).toLocaleDateString('pt-BR')}</strong> (${idade} anos)<br>
+        Escolaridade: <strong>${resultadoPessoa.grauEscolaridade}</strong><br>
+        Endereço: <strong>${resultadoPessoa.endereco}</strong><br>
+        Salário: <strong>R$ ${salario.toFixed(2)}</strong><br>
+        📦 FGTS (8%): <strong><span class="verde">R$ ${valorFGTS.toFixed(2)}</span></strong><br>
+        Passagem Diária: <strong>R$ ${passagemDiaria.toFixed(2)}</strong><br>
+        Optou pelo VT: <strong>${resultadoPessoa.opcaoVT ? "Sim" : "Não"}</strong><br>
+        <img src="${resultadoPessoa.foto}" alt="Foto de ${resultadoPessoa.nome}" />
+    `;
 
         // Atualiza os valores separados
         document.getElementById("valor-vt-func").textContent = resultadoPessoa.opcaoVT
