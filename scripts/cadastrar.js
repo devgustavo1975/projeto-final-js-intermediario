@@ -12,17 +12,22 @@ document.getElementById('form-funcionario').addEventListener('submit', function 
     const salario = parseFloat(document.getElementById('salario').value);
     const passagem = parseFloat(document.getElementById('valor-passagem').value);
     const vt = document.querySelector('input[name="opcaoVT"]:checked').value;
-    pessoas.push({
-        nome: nome,
-        sobrenome: sobrenome,
-        dtNascimento: nascimento,
-        sexo: sexo,
-        grauEscolaridade: escolaridade,
-        endereco: endereco,
-        salario: salario,
-        passagemDiaria: passagem,
-        opcaoVT: vt === "sim"
-    });
+    
+    // Cria o novo objeto com os dados do formulário
+            const novaPessoa = {
+                nome: `${nome} ${sobrenome}`,
+                dtNascimento: nascimento,
+                sexo: sexo,
+                grauEscolaridade: escolaridade,
+                endereco: endereco,
+                salario: salario,
+                passagemDiaria: passagem,
+                opcaoVT: vt.toLowerCase() === 'sim',
+                foto: gerarFotoAleatoria(sexo)
+            };
+
+    // Adiciona no array global
+            pessoas.push(novaPessoa);
 
     // Preenche os campos de exibição
     document.getElementById('res-nome').textContent = `${nome} ${sobrenome}`;
@@ -37,3 +42,9 @@ document.getElementById('form-funcionario').addEventListener('submit', function 
     // Limpa o formulário
     document.getElementById('form-funcionario').reset();
 });
+
+    function gerarFotoAleatoria(sexo) {
+            const id = Math.floor(Math.random() * 100); // 0 a 99
+            const genero = sexo.toLowerCase() === 'feminino' ? 'women' : 'men';
+            return `https://randomuser.me/api/portraits/${genero}/${id}.jpg`;
+        }
