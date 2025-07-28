@@ -55,6 +55,23 @@ input.addEventListener('input', () => {
             }
         }
 
+        const novaPessoa = {
+            nome: `${nome} ${sobrenome}`,
+            dtNascimento: nascimento,
+            sexo: sexo,
+            grauEscolaridade: escolaridade,
+            endereco: endereco,
+            salario: salario,
+            passagemDiaria: passagem,
+            opcaoVT: vt.toLowerCase() === 'sim',
+            foto: gerarFotoAleatoria(sexo)
+        };
+
+        // Agora você pode adicionar com a função
+        adicionarPessoa(novaPessoa);
+
+        console.log('Pessoa cadastrada:', novaPessoa);
+
         // Atualiza o HTML principal da pessoa
         resultado.innerHTML = `
         👤 <strong>${resultadoPessoa.nome}</strong><br>
