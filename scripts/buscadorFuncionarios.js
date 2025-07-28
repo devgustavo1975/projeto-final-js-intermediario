@@ -14,7 +14,7 @@ pessoas.forEach(pessoa => {
 const input = document.getElementById('input-nome');
 const resultado = document.getElementById('resultado');
 
-input.addEventListener('input', () => {
+input?.addEventListener('input', () => {
     const termo = input.value.trim().toLowerCase();
 
     if (termo === "") {
