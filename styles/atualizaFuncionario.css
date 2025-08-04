@@ -1,0 +1,35 @@
+    body {
+        font-family: Arial, sans-serif;
+        margin: 20px;
+        background: #f7f7f7;
+    }
+
+    label {
+        display: block;
+        margin-top: 10px;
+    }
+
+    input,
+    select {
+        width: 300px;
+        padding: 5px;
+        margin-top: 5px;
+    }
+
+    img {
+        border-radius: 8px;
+        margin-top: 10px;
+    }
+
+    .form-section {
+        background: white;
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0 0 10px #ccc;
+    }
+
+    .success {
+        color: green;
+        font-weight: bold;
+        margin-top: 10px;
+    }
