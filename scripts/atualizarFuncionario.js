@@ -29,7 +29,7 @@ const pessoas = [{
             dataFim: null
         },
     ]
-}
+},
     {
     nome: "João",
     sobrenome: "Souza",
@@ -61,7 +61,7 @@ const pessoas = [{
             dataFim: null
         },
     ]
-}   
+},   
     {
     nome: "Carla",
     sobrenome: "Ferreira",
@@ -99,7 +99,7 @@ const pessoas = [{
             dataFim: null
         },
     ]
-}
+},
    {
     nome: "Lucas",
     sobrenome: "Almeida",
@@ -137,7 +137,7 @@ const pessoas = [{
             dataFim: null
         },
     ]
-}
+},
  {
     nome: "Isabela",
     sobrenome: "Santos",
@@ -169,7 +169,7 @@ const pessoas = [{
             dataFim: null
         },
     ]
-}
+},
 {
     nome: "Mariana",
     sobrenome: "Castro",
@@ -208,7 +208,7 @@ const pessoas = [{
             dataFim: null
         },
     ]
-}
+},
 {
     nome: "Rafael",
     sobrenome: "Pereira",
@@ -240,7 +240,7 @@ const pessoas = [{
             dataFim: null
         },
     ]
-}
+},
 {
     nome: "Bruno",
     sobrenome: "Lima",
@@ -260,7 +260,7 @@ const pessoas = [{
             dataFim: null
         },
     ]
-}   
+},   
 {
     nome: "José",
     sobrenome: "Oliveira",
