@@ -1,4 +1,5 @@
 const pessoas = [{
+    id: 1,
     nome: "Maria",
     sobrenome: "da Silva",
     dtNascimento: "1990-03-29",
@@ -30,7 +31,8 @@ const pessoas = [{
         },
     ]
 },
-    {
+{
+    id: 2,
     nome: "João",
     sobrenome: "Souza",
     dtNascimento: "1985-10-22",
@@ -61,8 +63,9 @@ const pessoas = [{
             dataFim: null
         },
     ]
-},   
-    {
+},
+{
+    id: 3,
     nome: "Carla",
     sobrenome: "Ferreira",
     dtNascimento: "1990-06-15",
@@ -100,7 +103,8 @@ const pessoas = [{
         },
     ]
 },
-   {
+{
+    id: 4,
     nome: "Lucas",
     sobrenome: "Almeida",
     dtNascimento: "1992-03-09",
@@ -138,7 +142,8 @@ const pessoas = [{
         },
     ]
 },
- {
+{
+    id: 5,
     nome: "Isabela",
     sobrenome: "Santos",
     dtNascimento: "1998-11-04",
@@ -171,6 +176,7 @@ const pessoas = [{
     ]
 },
 {
+    id: 6,
     nome: "Mariana",
     sobrenome: "Castro",
     dtNascimento: "1979-04-27",
@@ -210,6 +216,7 @@ const pessoas = [{
     ]
 },
 {
+    id: 7,
     nome: "Rafael",
     sobrenome: "Pereira",
     dtNascimento: "1987-12-02",
@@ -242,6 +249,7 @@ const pessoas = [{
     ]
 },
 {
+    id: 8,
     nome: "Bruno",
     sobrenome: "Lima",
     dtNascimento: "2006-09-18",
@@ -260,8 +268,9 @@ const pessoas = [{
             dataFim: null
         },
     ]
-},   
+},
 {
+    id: 9,
     nome: "José",
     sobrenome: "Oliveira",
     dtNascimento: "1975-07-10",
@@ -299,6 +308,21 @@ const form = document.getElementById('formFuncionario');
 const mensagem = document.getElementById('mensagem');
 const foto = document.getElementById('fotoFuncionario');
 
+// Pega o ID da URL corretamente usando URLSearchParams
+const params = new URLSearchParams(window.location.search);
+const id = params.get("id"); // captura o valor de "?id=3"
+const idNumero = Number(id);
+
+// Mostra o ID no parágrafo sem o "?"
+const idDoUsuario = document.getElementById('id-user');
+if (!isNaN(idNumero)) {
+    idDoUsuario.innerText = `ID do usuário: ${idNumero}`;
+} else {
+    idDoUsuario.innerText = "ID não informado ou inválido.";
+}
+
+
+
 // Carregar opções no select
 pessoas.forEach((pessoa, index) => {
     const opt = document.createElement('option');
@@ -306,6 +330,20 @@ pessoas.forEach((pessoa, index) => {
     opt.textContent = `${pessoa.nome} ${pessoa.sobrenome}`;
     selectFuncionario.appendChild(opt);
 });
+
+const pessoaPorId = pessoas.find((p) => p.id === idNumero);
+
+if (pessoaPorId) {
+    const indexPessoa = pessoas.indexOf(pessoaPorId);
+    preencherFormulario(indexPessoa);
+    selectFuncionario.value = indexPessoa;
+    mensagem.textContent = "Funcionário carregado com sucesso.";
+} else {
+    preencherFormulario(0);
+    selectFuncionario.value = 0;
+    mensagem.textContent = "ID não encontrado. Primeiro funcionário carregado.";
+}
+
 
 function preencherFormulario(index) {
     const p = pessoas[index];
