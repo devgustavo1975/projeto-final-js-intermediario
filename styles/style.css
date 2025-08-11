@@ -1,0 +1,18 @@
+        .sucesso {
+            color: green;
+        }
+
+        .erro {
+            color: red;
+        }
+
+        #resultado img {
+            max-width: 120px;
+            margin-top: 10px;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+        }
+
+        .verde {
+          color: #388e3c;
+        }
