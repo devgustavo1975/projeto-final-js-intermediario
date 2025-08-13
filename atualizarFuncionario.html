@@ -15,7 +15,7 @@
   <!-- Menu -->
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
     <div class="container-fluid">
-      <a class="navbar-brand" href="#" onclick="home()">Funcionários</a>
+      <a class="navbar-brand"href="index.html">Funcionários</a>
       <div class="collapse navbar-collapse">
         <ul class="navbar-nav ms-auto">
           <li class="nav-item">
@@ -38,8 +38,6 @@
 
 
   <div class="form-section">
-    <label for="selectFuncionario">Selecionar Funcionário:</label>
-    <select id="selectFuncionario"></select>
 
     <img id="fotoFuncionario" src="" alt="Foto" width="100" height="100" />
 
@@ -83,76 +81,8 @@
     <div id="mensagem" class="success"></div>
   </div>
 
-  <script type="module">
-    // Dados dos funcionários
-    import { pessoas } from './pessoas.js'; // ou coloque o array diretamente aqui se não for usar módulo
-
-    // Pega o ID da URL
-    const id = window.location.search.substring(1); // ex: "?3"
-    const idNumero = Number(id);
-
-    // Referências aos elementos do DOM
-    const select = document.getElementById("selectFuncionario");
-    const form = document.getElementById("formFuncionario");
-    const foto = document.getElementById("fotoFuncionario");
-
-    // Preenche o select com todos os funcionários
-    pessoas.forEach(p => {
-      const option = document.createElement("option");
-      option.value = p.id;
-      option.textContent = `${p.nome} ${p.sobrenome}`;
-      select.appendChild(option);
-    });
-
-    // Função para preencher o formulário
-    function preencherFormulario(pessoa) {
-      document.getElementById("nome").value = pessoa.nome;
-      document.getElementById("sobrenome").value = pessoa.sobrenome;
-      document.getElementById("dtNascimento").value = pessoa.dtNascimento;
-      document.getElementById("sexo").value = pessoa.sexo;
-      document.getElementById("grauEscolaridade").value = pessoa.grauEscolaridade;
-      document.getElementById("endereco").value = pessoa.endereco;
-      document.getElementById("optouVT").value = pessoa.optouVT;
-      document.getElementById("salarioAtual").value = pessoa.salarioAtual;
-      document.getElementById("valorPassagem").value = pessoa.valorPassagem;
-      foto.src = pessoa.foto;
-    }
-
-    // Busca a pessoa e preenche o formulário
-    const pessoaAtual = pessoas.find(p => p.id === idNumero);
-    if (pessoaAtual) {
-      preencherFormulario(pessoaAtual);
-      select.value = pessoaAtual.id;
-    } else {
-      alert("Funcionário não encontrado!");
-    }
-
-    // Evento para mudar de funcionário manualmente pelo <select>
-    select.addEventListener("change", () => {
-      const novaPessoa = pessoas.find(p => p.id === Number(select.value));
-      if (novaPessoa) preencherFormulario(novaPessoa);
-    });
-
-    // (Opcional) Evento para atualizar os dados
-    form.addEventListener("submit", (event) => {
-      event.preventDefault();
-      const pessoa = pessoas.find(p => p.id === Number(select.value));
-      if (pessoa) {
-        pessoa.nome = document.getElementById("nome").value;
-        pessoa.sobrenome = document.getElementById("sobrenome").value;
-        pessoa.dtNascimento = document.getElementById("dtNascimento").value;
-        pessoa.sexo = document.getElementById("sexo").value;
-        pessoa.grauEscolaridade = document.getElementById("grauEscolaridade").value;
-        pessoa.endereco = document.getElementById("endereco").value;
-        pessoa.optouVT = document.getElementById("optouVT").value === "true";
-        pessoa.salarioAtual = Number(document.getElementById("salarioAtual").value);
-        pessoa.valorPassagem = Number(document.getElementById("valorPassagem").value);
-
-        document.getElementById("mensagem").textContent = "Funcionário atualizado com sucesso!";
-      }
-    });
-  </script>
   <script type="module" src="./scripts/atualizarFuncionario.js"></script>
+
 </body>
 
 </html>
