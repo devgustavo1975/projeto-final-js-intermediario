@@ -28,7 +28,7 @@ function carregarPOST() {
                     "foto": "img/ana clara.png",
                     "salarioAtual": 5000.00,
                     "valorPassagem": 22.00,
-                    "optouVT": true,
+                    "opcaoVT": true,
                     "historicoCargosESalarios": [
                         {
                             "cargo": "Desenvolvedora Senior",
