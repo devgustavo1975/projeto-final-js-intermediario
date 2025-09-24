@@ -15,7 +15,7 @@ let salarioAtual = document.getElementById('salarioAtual').value
 let valorPassagem = document.getElementById('valorPassagem').value
 
 if(pessoaEncontrada){
-    //document.getElementById('fotoFuncionario').src = pessoaEncontrada.foto
+    document.getElementById('fotoFuncionario').src = pessoaEncontrada.foto
     document.getElementById('nome').value = pessoaEncontrada.nome
     document.getElementById('sobrenome').value = pessoaEncontrada.sobrenome
     document.getElementById('dtNascimento').value = pessoaEncontrada.dtNascimento
@@ -27,6 +27,3 @@ if(pessoaEncontrada){
     document.getElementById('valorPassagem').value = pessoaEncontrada.valorPassagem
 
 }
-
-console.log(nome);
-
