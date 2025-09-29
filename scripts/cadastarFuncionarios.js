@@ -1,20 +1,30 @@
 function cadastrarFuncionarios() {
+    let nome = document.getElementById('nome').value
+    let sobrenome = document.getElementById('sobrenome').value
+    let dtNascimento = document.getElementById('dtNascimento').value
+    let sexo = document.getElementById('sexo').value
+    let grauEscolaridade = document.getElementById('grauEscolaridade').value
+    let endereco = document.getElementById('endereco').value
+    let optouVT = document.getElementById('optouVT').value
+    let salarioAtual = document.getElementById('salarioAtual').value
+    let valorPassagem = document.getElementById('valorPassagem').value
+
     fetch('https://node-vercel-app-rho.vercel.app/api/funcionarios', {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(
             {
                 "funcionario": {
-                    "nome": "Maria",
-                    "sobrenome": "da Silva",
-                    "sexo": "Feminino",
-                    "dtNascimento": "1990-03-29",
-                    "grauEscolaridade": "Ensino Superior Completo",
-                    "endereco": "Rua das Flores, 123",
-                    "foto": "img/ana clara.png",
-                    "salarioAtual": 5000.00,
-                    "valorPassagem": 22.00,
-                    "optouVT": true,
+                    "nome": `${nome}`,
+                    "sobrenome": `${sobrenome}`,
+                    "sexo": `${sexo}`,
+                    "dtNascimento": `${dtNascimento}`,
+                    "grauEscolaridade": `${grauEscolaridade}`,
+                    "endereco": `${endereco}`,
+                    "foto": "foto",
+                    "salarioAtual": `${salarioAtual}`,
+                    "valorPassagem": `${valorPassagem}`,
+                    "optouVT": `${optouVT}`,
                     "historicoCargosESalarios": [
                         {
                             "cargo": "Desenvolvedora Senior",
