@@ -9,12 +9,12 @@
     <link rel="stylesheet" href="./styles/style.css">
 </head>
 
-<body class="bg-light" onload="carregarListaFuncionarios()">
+<body class="bg-light">
 
     <!-- Menu -->
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <div class="container-fluid">
-            <a class="navbar-brand" href="#" onclick="home()">Funcionários</a>
+            <a class="navbar-brand" href="#">Funcionários</a>
             <div class="collapse navbar-collapse">
                 <ul class="navbar-nav ms-auto">
                     <li class="nav-item">
@@ -54,7 +54,7 @@
 
                         <div class="mb-3">
                             <label for="nascimento" class="form-label">Data de Nascimento</label>
-                            <input type="date" class="form-control" id="nascimento" required>
+                            <input type="date" class="form-control" id="dtNascimento" required>
                         </div>
 
                         <div class="mb-3">
@@ -69,7 +69,7 @@
 
                         <div class="mb-3">
                             <label for="escolaridade" class="form-label">Escolaridade</label>
-                            <select class="form-select" id="escolaridade" required>
+                            <select class="form-select" id="grauEscolaridade" required>
                                 <option value="" selected disabled>Selecione</option>
                                 <option value="fundamental">Ensino Fundamental</option>
                                 <option value="medio">Ensino Médio</option>
@@ -85,29 +85,29 @@
 
                         <div class="mb-3">
                             <label for="salario" class="form-label">Salário</label>
-                            <input type="number" class="form-control" id="salario" step="0.01" required>
+                            <input type="number" class="form-control" id="salarioAtual" step="0.01" required>
                         </div>
 
                         <div class="mb-3">
                             <label for="valor-passagem" class="form-label">Valor da passagem diário</label>
-                            <input type="number" class="form-control" id="valor-passagem" step="0.01" required>
+                            <input type="number" class="form-control" id="valorPassagem" step="0.01" required>
                         </div>
 
                         <div class="mb-3">
                             <label class="form-label d-block">Opção pelo VT</label>
                             <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="radio" name="opcaoVT" id="vt-sim" value="sim"
+                                <input class="form-check-input" type="radio" name="optouVT" id="optouVT" value="sim"
                                     required>
                                 <label class="form-check-label" for="vt-sim">Sim</label>
                             </div>
                             <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="radio" name="opcaoVT" id="vt-nao" value="nao"
+                                <input class="form-check-input" type="radio" name="optouVT" id="optouVT" value="nao"
                                     required>
                                 <label class="form-check-label" for="vt-nao">Não</label>
                             </div>
                         </div>
 
-                        <button type="submit" class="btn btn-success w-100" onclick="cadastrarFuncionarios()">Cadastrar Funcionário</button>
+                        <button type="button" class="btn btn-success w-100" onclick="cadastrarFuncionarios()">Cadastrar Funcionário</button>
                     </form>
                 </div>
 
@@ -133,7 +133,7 @@
 
     <script type="module" src="./scripts/buscadorFuncionarios.js"></script>
     <script type="module" src="./scripts/funcionarios.js"></script>
-    <script type="module" src="./scripts/cadastrar.js"></script>
+    <!-- <script type="module" src="./scripts/cadastrar.js"></script> -->
     <script src="./scripts/cadastarFuncionarios.js"></script>
 
 </body>

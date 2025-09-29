@@ -39,7 +39,7 @@
 
   <div class="form-section">
 
-    <img id="fotoFuncionario" src="" alt="Foto" width="100" height="100" />
+    <!-- <img id="fotoFuncionario" src="" alt="Foto" width="100" height="100" /> -->
 
     <form id="formFuncionario">
       <label>Nome:
@@ -53,8 +53,8 @@
       </label>
       <label>Sexo:
         <select id="sexo">
-          <option>Feminino</option>
-          <option>Masculino</option>
+          <option value="feminino">Feminino</option>
+          <option value="masculino">Masculino</option>
         </select>
       </label>
       <label>Grau de Escolaridade:
@@ -65,8 +65,8 @@
       </label>
       <label>Optou por VT:
         <select id="optouVT">
-          <option value="true">Sim</option>
-          <option value="false">Não</option>
+          <option value="sim">Sim</option>
+          <option value="não">Não</option>
         </select>
       </label>
       <label>Salário Atual:
@@ -75,14 +75,14 @@
       <label>Valor da Passagem:
         <input type="number" id="valorPassagem" />
       </label>
-      <button type="submit">Atualizar</button>
+      <button type="button" onclick="alterarFuncionario()">Atualizar</button>
     </form>
 
     <div id="mensagem" class="success"></div>
   </div>
 
   <!-- <script type="module" src="./scripts/atualizarFuncionario.js"></script> -->
-  <script type="module" src="./scripts/atualizarFuncionarios.js"></script>
+  <script src="./scripts/atualizarFuncionarios.js"></script>
 
 </body>
 
