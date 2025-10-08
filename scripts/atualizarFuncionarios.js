@@ -20,15 +20,15 @@ fetch(`https://node-vercel-app-rho.vercel.app/api/funcionarios/${idUsuario}`, {
 
 function preencherDados(funcionario){
     document.getElementById('id-user').innerHTML = `Id do usuário: ${funcionario._id}`
-    document.getElementById('nome').value = funcionario.funcionario.nome
-    document.getElementById('sobrenome').value = funcionario.funcionario.sobrenome
-    document.getElementById('dtNascimento').value = funcionario.funcionario.dtNascimento
-    document.getElementById('sexo').value = funcionario.funcionario.sexo
-    document.getElementById('grauEscolaridade').value = funcionario.funcionario.grauEscolaridade.toLocaleLowerCase();
-    document.getElementById('endereco').value = funcionario.funcionario.endereco
-    document.getElementById('optouVT').value = funcionario.funcionario.optouVT
-    document.getElementById('salarioAtual').value = funcionario.funcionario.salarioAtual
-    document.getElementById('valorPassagem').value = funcionario.funcionario.valorPassagem
+    document.getElementById('nome').value = funcionario.nome
+    document.getElementById('sobrenome').value = funcionario.sobrenome
+    document.getElementById('dtNascimento').value = funcionario.dtNascimento
+    document.getElementById('sexo').value = funcionario.sexo
+    document.getElementById('grauEscolaridade').value = funcionario.grauEscolaridade.toLocaleLowerCase();
+    document.getElementById('endereco').value = funcionario.endereco
+    document.getElementById('optouVT').value = funcionario.optouVT
+    document.getElementById('salarioAtual').value = funcionario.salarioAtual
+    document.getElementById('valorPassagem').value = funcionario.valorPassagem
 }
 
 function alterarFuncionario() {
@@ -47,8 +47,8 @@ function alterarFuncionario() {
         method: "PUT",
         headers: { "Content-Type": "application/json" },
          body: JSON.stringify(
-            {
-                "funcionario": {
+            
+                {
                     "nome": `${nome}`,
                     "sobrenome": `${sobrenome}`,
                     "sexo": `${sexo}`,
@@ -56,9 +56,9 @@ function alterarFuncionario() {
                     "grauEscolaridade": `${grauEscolaridade}`,
                     "endereco": `${endereco}`,
                     "foto": "foto",
-                    "salarioAtual": `${salarioAtual}`,
-                    "valorPassagem": `${valorPassagem}`,
-                    "optouVT": `${optouVT}`,
+                    "salarioAtual": Number(salarioAtual),
+                    "valorPassagem": Number(valorPassagem),
+                    "optouVT": optouVT === "true",
                     "historicoCargosESalarios": [
                         {
                             "cargo": "Desenvolvedora Senior",
@@ -67,8 +67,10 @@ function alterarFuncionario() {
                             "dataFim": "null"
                         }
                     ]
-                }
+                
             }
+
+            
         )
     })
         .then(resp => resp.json())

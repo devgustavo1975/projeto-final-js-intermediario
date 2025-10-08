@@ -24,13 +24,13 @@ function carregarDados(dados) {
 
         card.innerHTML = `
             <div class="card h-100 shadow link-card" id="${pessoa._id}" style="cursor:pointer">
-              <img src="${pessoa.funcionario.foto}" class="card-img-top" alt="${pessoa.funcionario.nome}">
+              <img src="${pessoa.foto}" class="card-img-top" alt="${pessoa.nome}">
               <div class="card-body">
-                <h5 class="card-title">${pessoa.funcionario.nome}</h5>
-                <p class="card-text"><strong>Data de Nascimento:</strong> ${new Date(pessoa.funcionario.dtNascimento).toLocaleDateString('pt-BR')}</p>
-                <p class="card-text"><strong>Sexo:</strong> ${pessoa.funcionario.sexo}</p>
-                <p class="card-text"><strong>Escolaridade:</strong> ${pessoa.funcionario.grauEscolaridade}</p>
-                <p class="card-text"><strong>Endereço:</strong> ${pessoa.funcionario.endereco}</p>
+                <h5 class="card-title">${pessoa.nome}</h5>
+                <p class="card-text"><strong>Data de Nascimento:</strong> ${new Date(pessoa.dtNascimento).toLocaleDateString('pt-BR')}</p>
+                <p class="card-text"><strong>Sexo:</strong> ${pessoa.sexo}</p>
+                <p class="card-text"><strong>Escolaridade:</strong> ${pessoa.grauEscolaridade}</p>
+                <p class="card-text"><strong>Endereço:</strong> ${pessoa.endereco}</p>
               </div>
             </div>
         `;
