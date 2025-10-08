@@ -84,8 +84,23 @@
                         </div>
 
                         <div class="mb-3">
+                            <label for="Inicio" class="form-label">Data de Inicio</label>
+                            <input type="date" class="form-control" id="dataInicio" required>
+                        </div>
+                        
+                        <div class="mb-3">
+                            <label for="Fim" class="form-label">Data do Fim </label>
+                            <input type="date" class="form-control" id="dataDemissao" required>
+                        </div>
+                        
+                        <div class="mb-3">
+                            <label for="cargo" class="form-label">Cargo</label>
+                            <input type="text" class="form-control" id="cargo" required>
+                        </div>
+                        
+                        <div class="mb-3">
                             <label for="salario" class="form-label">Salário</label>
-                            <input type="number" class="form-control" id="salarioAtual" step="0.01" required>
+                            <input type="number" class="form-control" id="salario" step="0.01" required>
                         </div>
 
                         <div class="mb-3">
@@ -96,12 +111,12 @@
                         <div class="mb-3">
                             <label class="form-label d-block">Opção pelo VT</label>
                             <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="radio" name="optouVT" id="optouVT" value="sim"
+                                <input class="form-check-input" type="radio" name="optouVT" id="vt-sim" value="true"
                                     required>
                                 <label class="form-check-label" for="vt-sim">Sim</label>
                             </div>
                             <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="radio" name="optouVT" id="optouVT" value="nao"
+                                <input class="form-check-input" type="radio" name="optouVT" id="vt-nao" value="false"
                                     required>
                                 <label class="form-check-label" for="vt-nao">Não</label>
                             </div>
